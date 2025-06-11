@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookish</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+      <a href="index.html" class="navbar-brand">Bookish</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="books.html" class="nav-link">Books</a></li>
+        <li class="nav-item"><a href="facts.html" class="nav-link">Facts</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+  </header>
+
+  <main class="container">
+    <h1 class="text-center py-3">Book Details</h1>
+    <div id="bookDetailsList" class="container py-3"></div>
+  </main>
+
+
+<script>
+
+
+   function getParameterByName(name){
+    const url = new URL(window.location.href) 
+    return url.searchParams.get(name)
+  }
+
+  const bookId = getParameterByName("id");
+  console.log(bookId)
+
+  const bookDetailsList = document.querySelector('#bookDetailsList')
+    let libraryData = [
+      {
+        id: 1,
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        ISBN: "978-0-7432-7356-5",
+        genre: "Classic",
+        publicationYear: 1925,
+        mediaType: "Book",
+        availabilityStatus: "In Stock",
+        location: "Fiction Section, Shelf A",
+        condition: "Good"
+      },
+      {
+        id: 2,
+        title: "The Hitchhiker's Guide to the Galaxy",
+        author: "Douglas Adams",
+        ISBN: "978-0-345-39180-3",
+        genre: "Science Fiction",
+        publicationYear: 1979,
+        mediaType: "Book",
+        availabilityStatus: "Checked Out",
+        location: "Science Fiction Section, Shelf B",
+        condition: "New"
+      },
+      {
+        id: 3,
+        title: "The Beatles Anthology",
+        author: "The Beatles",
+        ISBN: "978-0811826846",
+        genre: "Music",
+        publicationYear: 2000,
+        mediaType: "DVD",
+        availabilityStatus: "On Hold",
+        location: "Music Section, Shelf C",
+        condition: "Fair"
+      },
+      {
+        id: 4,
+        title: "National Geographic",
+        author: "Various",
+        ISBN: "NG-MAG-2023-001",
+        genre: "Magazine",
+        publicationYear: 2023,
+        mediaType: "Magazine",
+        availabilityStatus: "In Stock",
+        location: "Periodicals Section, Shelf D",
+        condition: "Good"
+      },
+      {
+        id: 5,
+        title: "Database Management Essentials",
+        author: "Abraham Silberschatz",
+        ISBN: "978-0077079611",
+        genre: "Technology",
+        publicationYear: 2019,
+        mediaType: "Digital Book",
+        availabilityStatus: "In Stock",
+        location: "Technology Section, Shelf E",
+        condition: "New"
+      }
+    ];
+
+
+    const book = libraryData.find (library => library.id === parseInt(bookId))
+
+    if (book) {
+
+    const div = document.createElement('div')
+    div.className = "card container py-3"
+
+    const h2 = document.createElement('h2')
+    h2.textContent = `${book.title}`
+
+    const p1 = document.createElement('p')
+    p1.innerHTML = `Author: ${book.author} <hr/>`
+
+    const p2 = document.createElement('p')
+    p2.innerHTML = `ISBN: ${book.ISBN} <hr/>`
+
+    const p3 = document.createElement('p')
+    p3.innerHTML = `Genre: ${book.genre} <hr/>`
+
+    const p4 = document.createElement('p')
+    p4.innerHTML = `Publication Year: ${book.publicationYear} <hr/>`
+
+    const p5 = document.createElement('p')
+    p5.innerHTML = `Media Type: ${book.mediaType} <hr/>`
+
+    const p6 = document.createElement('p')
+    p6.innerHTML = `Availability: ${book.availabilityStatus} <hr/>`
+
+    const p7 = document.createElement('p')
+    p7.innerHTML = `Condition: ${book.condition} <hr/>`
+
+
+    div.appendChild(h2)
+    div.appendChild(p1)
+    div.appendChild(p2)
+    div.appendChild(p3)
+    div.appendChild(p4)
+    div.appendChild(p5)
+    div.appendChild(p6)
+    div.appendChild(p7)
+
+    bookDetailsList.appendChild(div)
+    }
+     
+</script>
+
+
+
+
+
+
+  <!-- <footer class="bg-dark text-center py-2 text-light">
+    <p class="container" >&copy; 2024 Bookish. All right reserved.</p>
+  </footer> -->
+  
+</body>
+</html>
